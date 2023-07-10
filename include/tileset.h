@@ -13,7 +13,7 @@
 namespace porytiles {
 // Tileset images will be 16 tiles wide to match vanilla
 constexpr size_t FINAL_IMAGE_WIDTH_IN_TILES = 16;
-constexpr int NUM_BG_PALS = 12;
+constexpr int NUM_BG_PALS = 13;
 
 class Tileset {
     std::vector<IndexedTile> tiles;
