@@ -46,6 +46,10 @@ CXXFLAGS             += -Wall -Wpedantic -Werror -std=c++20 -DPNG_SKIP_SETJMP_CH
 CXXFLAGS             += -Iinclude $(shell pkg-config --cflags libpng) -Idoctest-2.4.11 -Ipng++-0.2.9 -Ifmt-10.0.0/include
 ifneq '' '$(findstring GCC,$(COMPILER_VERSION))'
 # If GCC, do O1, G++13 O2+ is broken when compiling libfmt code, see `potential-gcc-bug' branch
+# The reason this happens is:
+# https://github.com/fmtlib/fmt/issues/3481
+# It's a bogus warning from GCC. The problem is fixed on fmtlib master. Once they do another release, I can update
+# to resolve this issue.
 	CXXFLAGS_RELEASE     := $(CXXFLAGS) -O2
 else
 	CXXFLAGS_RELEASE     := $(CXXFLAGS) -O3
